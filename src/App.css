@@ -1,38 +1,173 @@
-.App {
-  text-align: center;
+:root {
+  --bg: #0b1020;
+  --panel: #111a33;
+  --panel2: #0f1730;
+  --text: #e8ecff;
+  --muted: rgba(232, 236, 255, 0.7);
+  --border: rgba(232, 236, 255, 0.12);
+  --accent: #8aa1ff;
+  --danger: #ff5d6c;
+  --shadow: rgba(0, 0, 0, 0.35);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.Shell {
   min-height: 100vh;
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(138, 161, 255, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 80% 15%, rgba(255, 93, 108, 0.10), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-columns: 340px 1fr 420px;
+  grid-template-rows: 56px 1fr;
+  grid-template-areas:
+    "top top top"
+    "left main right";
+}
+
+.Topbar {
+  grid-area: top;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(17, 26, 51, 0.92), rgba(15, 23, 48, 0.92));
+  backdrop-filter: blur(10px);
+}
+
+.Topbar-left {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2px;
 }
 
-.App-link {
-  color: #61dafb;
+.Topbar-right {
+  display: flex;
+  gap: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.Brand {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.Muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.Mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+}
+
+.Btn {
+  background: rgba(232, 236, 255, 0.06);
+  border: 1px solid rgba(232, 236, 255, 0.14);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px var(--shadow);
+}
+
+.Btn:hover {
+  border-color: rgba(138, 161, 255, 0.55);
+}
+
+.Btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.Btn-danger {
+  border-color: rgba(255, 93, 108, 0.38);
+}
+
+.Left,
+.Right {
+  border-right: 1px solid var(--border);
+  background: rgba(17, 26, 51, 0.55);
+  backdrop-filter: blur(10px);
+}
+
+.Right {
+  border-right: none;
+  border-left: 1px solid var(--border);
+}
+
+.Left {
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.Main {
+  grid-area: main;
+  padding: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Right {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.Tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 12px 0 12px;
+}
+
+.Tab {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(232, 236, 255, 0.05);
+  border: 1px solid rgba(232, 236, 255, 0.10);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.Tab-active {
+  border-color: rgba(138, 161, 255, 0.55);
+  background: rgba(138, 161, 255, 0.12);
+}
+
+.LeftBody {
+  padding: 12px;
+  overflow: auto;
+}
+
+.Banner {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(232, 236, 255, 0.12);
+  background: rgba(232, 236, 255, 0.06);
+  color: var(--text);
+}
+
+.Banner-error {
+  border-color: rgba(255, 93, 108, 0.35);
+  background: rgba(255, 93, 108, 0.12);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 1100px) {
+  .Shell {
+    grid-template-columns: 320px 1fr;
+    grid-template-areas:
+      "top top"
+      "left main";
   }
-  to {
-    transform: rotate(360deg);
+
+  .Right {
+    display: none;
   }
 }

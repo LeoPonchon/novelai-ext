@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# NovelAI Chat + Image (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+App web React (Create React App) avec :
 
-## Available Scripts
+- Onglet **Personnage** (fiche perso injectée en message système)
+- Chat principal (centre)
+- Image de scène (droite), régénérée automatiquement à chaque réponse IA
 
-In the project directory, you can run:
+## Démarrer
 
-### `npm start`
+Dans `novelai-ext/` :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ça lance :
 
-### `npm test`
+- le serveur React sur `http://localhost:3000`
+- un proxy Node/Express sur `http://localhost:3001` (évite les soucis CORS)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Configuration NovelAI
 
-### `npm run build`
+Dans l’onglet **Paramètres** :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Colle ton **Persistent API Token** (NovelAI → Settings → Account → “Get Persistent API Token”)
+- Par défaut l’app utilise :
+  - Texte : `glm-4-6`
+  - Image : `nai-diffusion-4-5-curated`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Remarque : par simplicité, le token est stocké en `localStorage` côté navigateur. Ne déploie pas ça tel quel en prod.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Override serveur (optionnel)
 
-### `npm run eject`
+Le proxy (`server/index.js`) accepte :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `NOVELAI_TEXT_BASE_URL` (défaut: `https://text.novelai.net/oa/v1`)
+- `NOVELAI_IMAGE_BASE_URL` (défaut: `https://image.novelai.net`)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Scripts utiles
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `npm start` : serveur + client (dev)
+- `npm run start:client` : React uniquement
+- `npm run start:server` : proxy uniquement
+- `npm test` : tests

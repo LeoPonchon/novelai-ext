@@ -1,0 +1,112 @@
+.Convos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Convos-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.Convos-title {
+  font-weight: 700;
+}
+
+.Convos-empty {
+  color: rgba(232, 236, 255, 0.7);
+  padding: 8px 2px;
+}
+
+.Convos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Convo {
+  border-radius: 14px;
+  border: 1px solid rgba(232, 236, 255, 0.12);
+  background: rgba(15, 23, 48, 0.35);
+  overflow: hidden;
+}
+
+.Convo-active {
+  border-color: rgba(138, 161, 255, 0.55);
+  background: rgba(138, 161, 255, 0.10);
+}
+
+.Convo-open {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.Convo-titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.Convo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(232, 236, 255, 0.35);
+  flex: none;
+}
+
+.Convo-active .Convo-dot {
+  background: rgba(138, 161, 255, 0.95);
+}
+
+.Convo-titleText {
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Convo-sub {
+  color: rgba(232, 236, 255, 0.7);
+  font-size: 12px;
+  flex: none;
+}
+
+.Convo-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 12px 12px 12px;
+  align-items: center;
+}
+
+.Convo-rename {
+  flex: 1;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(15, 23, 48, 0.55);
+  border: 1px solid rgba(232, 236, 255, 0.14);
+  color: rgba(232, 236, 255, 0.95);
+  outline: none;
+  font-size: 14px;
+}
+
+.Convo-rename:focus {
+  border-color: rgba(138, 161, 255, 0.55);
+}
+
+.Convo-delete {
+  flex: none;
+}
+
